@@ -3,10 +3,16 @@ const Student = require("../models/Student");
 const getStudents = async (req, res, next) => {
   try {
     const student = await Student.find();
-    res.json({
-      data: student,
-      msg: "Show all students",
-    });
+    if (!student.length) {
+      res.json({
+        msg: "no students found",
+      });
+    } else {
+      res.json({
+        data: student,
+        msg: "Show all students",
+      });
+    }
   } catch (err) {
     console.log(err);
   }

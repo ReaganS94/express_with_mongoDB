@@ -6,11 +6,14 @@ const StudentSchema = new Schema({
   name: {
     type: String,
     required: true,
+    minlength: [3, "min length is 3 characters"],
+    unique: true,
   },
 
   first_name: {
     type: String,
     required: true,
+    unique: true,
   },
   email: {
     type: String,
